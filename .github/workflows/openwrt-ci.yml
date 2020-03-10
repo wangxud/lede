@@ -6,15 +6,15 @@
 # 
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
-
-name: P3-OpenWrt-V2
+# 树莓派3B
+name: P3-OpenWrt-V3
 
 on:
-  push:
+  schedule:
+   - cron: 0 20 * * *
+  push: 
     branches: 
       - master
-  # schedule:
-  #   - cron: 0 20 * * *
   # release:
   #   types: [published]
 
@@ -96,7 +96,7 @@ jobs:
           # 无论你想要对固件进行怎样的定制, 都需要且只需要修改 EOF 回环内的内容.
           # 
 
-          # 编译x64固件:
+          # 编译树莓派派3B固件:
           cat >> .config <<EOF
           CONFIG_TARGET_brcm2708=y
           CONFIG_TARGET_brcm2708_bcm2710=y
